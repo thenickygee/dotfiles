@@ -11,6 +11,7 @@ return {
   config = function()
     require("bufferline").setup({
       options = {
+        separator_style = "padded_slant",
         diagnostics = "nvim_lsp",
         offsets = {
           {
