@@ -5,14 +5,11 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v2.x",
+  lazy = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
-  },
-  keys = {
-    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle file explorer" },
-    { "<leader>o", "<cmd>Neotree focus<cr>", desc = "Focus file explorer" },
   },
   config = function()
     require("neo-tree").setup({
@@ -43,6 +40,20 @@ return {
         },
         use_libuv_file_watcher = true,
       },
+    })
+
+    -- Set up keybindings
+    vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle file explorer" })
+    vim.keymap.set("n", "<leader>o", "<cmd>Neotree focus<cr>", { desc = "Focus file explorer" })
+
+    -- Auto-open Neo-tree on startup
+    vim.api.nvim_create_autocmd("VimEnter", {
+      group = vim.api.nvim_create_augroup("neotree_auto_open", { clear = true }),
+      callback = function()
+        vim.schedule(function()
+          vim.cmd("Neotree show")
+        end)
+      end,
     })
   end,
 }
