@@ -65,6 +65,7 @@ alias trim="git branch -D"
 alias grow="git switch -C"
 alias branch="git branch"
 alias main="git switch main"
+alias status="git status && git diff --stat"
 
 # ============================================================================
 # Tool Initializations
