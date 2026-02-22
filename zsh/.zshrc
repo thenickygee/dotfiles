@@ -59,6 +59,10 @@ alias nodes="lsof -i -P -n | grep node"
 alias dev="npm run dev"
 alias build="npm run build"
 
+# NPX
+alias npt="npx playwright test"
+alias nps="npx playwright show-report"
+
 # Git
 alias pull="git pull"
 alias trim="git branch -D"
